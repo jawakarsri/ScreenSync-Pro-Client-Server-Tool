@@ -1,11 +1,14 @@
 from vidstream import ScreenShareClient
 import threading 
 
-sender= ScreenShareClient('192.168.56.1', 9999) # same computer otherwise specify public ip address here
+# Update the IP address to the receiver's active IP (192.168.1.4)
+sender = ScreenShareClient('192.168.1.4', 9999)  # Adjust IP if receiver is on another device
 
-t= threading.Thread(target=sender.start_stream)
+# Start the screen sharing in a separate thread
+t = threading.Thread(target=sender.start_stream)
 t.start()
 
+# Wait for user input to stop the screen sharing
 while input("") != 'STOP':
     continue
 
